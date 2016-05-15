@@ -49,6 +49,15 @@
      */
     function selectUser ( user ) {
       self.selected = angular.isNumber(user) ? $scope.users[user] : user;
+
+      $mdBottomSheet.show({
+        controllerAs  : "vm",
+        templateUrl   : './src/users/view/contactSheet.html',
+        controller    : [ '$mdBottomSheet', ContactSheetController],
+        parent        : angular.element(document.getElementById('content'))
+      }).then(function(clickedItem) {
+        $log.debug( clickedItem.name + ' clicked!');
+      });
     }
 
     /**
@@ -56,10 +65,10 @@
      */
     function makeContact(selectedUser) {
 
-        $mdBottomSheet.show({
+        $mdGridList.show({
           controllerAs  : "vm",
-          templateUrl   : './src/users/view/contactSheet.html',
-          controller    : [ '$mdBottomSheet', ContactSheetController],
+          templateUrl   : './src/stack/view/stackList.html',
+          controller    : [ '$mdGridList', ContactSheetController],
           parent        : angular.element(document.getElementById('content'))
         }).then(function(clickedItem) {
           $log.debug( clickedItem.name + ' clicked!');
@@ -83,6 +92,7 @@
             $mdBottomSheet.hide(action);
           };
         }
+
     }
 
   }
