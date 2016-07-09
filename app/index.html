@@ -50,9 +50,10 @@
         <md-content flex id="content">
 
           <img src="{{ul.selected.avatar}}" class="avatar"></img>
-          <h2>{{ul.selected.name}}</h2>
+          <h2>{{ul.selected.name}}</h2><a style="text-decoration : none; font-weight:bold;" href="{{ul.selected.github}}">Github</a>
           <p>{{ul.selected.content}}</p>
             <md-divider></md-divider>
+          <p><img ng-if"ul.selected.screenshot"class="screenshot" src="{{ul.selected.screenshot}}"/></p>  
 
           <md-button class="share" md-no-ink ng-click="ul.makeContact(ul.selected)" aria-label="Contact {{ ul.selected.name }}">
             <md-icon md-svg-icon="share"></md-icon>
